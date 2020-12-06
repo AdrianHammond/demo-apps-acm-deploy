@@ -1,15 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodejs-helloworld
+  name: nodejs-helloworld-deployment
   labels:
     app: nodejs-helloworld
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-helloworld
   template:
+    metadata:
+      labels:
+        app: nodejs-helloworld
     spec:
       containers:
       - name: nodejs-helloworld
         image: quay.io/adrianhammond/do180-custom-httpd:v1.0
+        ports:
+        - containerPort: 80
         env:
         - name: RELEASE
           value: "Stage Release v1.0.0"
