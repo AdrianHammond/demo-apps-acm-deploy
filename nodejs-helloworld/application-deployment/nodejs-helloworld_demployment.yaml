@@ -19,13 +19,38 @@ spec:
         image: quay.io/adrianhammond/nodejs-helloworld:v1.0
         ports:
         - containerPort: 8080
-        # resources:
-        #   requests:
-        #   memory: "64Mi"
-        #   cpu: "250m"
-        # limits:
-        #   memory: "128Mi"
-        #   cpu: "500m"
         env:
         - name: RELEASE
           value: "Stage Release v1.0.0"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-helloworld-service
+  namespace: nodejs-helloworld
+spec:
+  selector:
+    app: nodejs-helloworld
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+---
+
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: nodejs-helloworld-route
+  namespace: nodejs-helloworld
+spec:
+  path: /
+  to:
+    kind: Service
+    name: nodejs-helloworld-service
+  port:
+    targetPort: 8080
+
+
