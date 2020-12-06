@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-helloworld
+  labels:
+    app: nodejs-helloworld
+spec:
+  template:
+    spec:
+      containers:
+      - name: nodejs-helloworld
+        image: quay.io/adrianhammond/do180-custom-httpd:v1.0
+        env:
+        - name: RELEASE
+          value: "Stage Release v1.0.0"
