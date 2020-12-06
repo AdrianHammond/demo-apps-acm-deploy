@@ -19,6 +19,13 @@ spec:
         image: quay.io/adrianhammond/do180-custom-httpd:v1.0
         ports:
         - containerPort: 80
+        resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
         env:
         - name: RELEASE
           value: "Stage Release v1.0.0"
