@@ -8,5 +8,7 @@ metadata:
   name: acm-demo-apps-channel
   namespace: acm-demo-apps-channel
 spec:
-  type: GitHub
-  pathname: https://github.com/AdrianHammond/demo-apps.git
+  type: Git
+  pathname: https://github.com/AdrianHammond/demo-apps-acm-deploy.git
+
+  

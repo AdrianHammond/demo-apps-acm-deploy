@@ -11,7 +11,7 @@ metadata:
     apps.open-cluster-management.io/github-path: nodejs-helloworld
     apps.open-cluster-management.io/github-branch: master
 spec:
-  channel: acm-demo-apps-channel/nodejs-helloworld
+  channel: acm-demo-apps-channel/acm-demo-apps-channel
   placement:
     placementRef:
       kind: PlacementRule
